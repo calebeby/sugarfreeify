@@ -8,7 +8,13 @@ import path from 'path'
 import rmfr from 'rmfr'
 import sugarfreeify from '..'
 
+import child from 'child_process'
+
 const read = file => fs.readFile(file, 'utf-8')
+const exec = command => {
+  console.log(command)
+  return new Promise(resolve => child.exec(command, resolve))
+}
 
 const fixture = dir => {
   return file => path.join(
@@ -52,5 +58,13 @@ test('custom output extension', async t => {
   await sugarfreeify.run(['abcd', 'sugarml', 'foobar'])
   const expected = await read(fixture('customout')('expected.foobar'))
   const actual = await read(fixture('customout')('input.foobar'))
+  t.deepEqual(expected, actual)
+})
+
+test('calling script runs it', async t => {
+  await rmfr(fixture('run-cli')('input.foobar'))
+  await exec('../index.js blah sugarml foobar')
+  const expected = await read(fixture('run-cli')('expected.foobar'))
+  const actual = await read(fixture('run-cli')('input.foobar'))
   t.deepEqual(expected, actual)
 })
