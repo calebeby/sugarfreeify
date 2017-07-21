@@ -1,9 +1,8 @@
 [![Build Status](https://travis-ci.org/calebeby/sugarfreeify.svg?branch=master)](https://travis-ci.org/calebeby/sugarfreeify)
 [![codecov](https://codecov.io/gh/calebeby/sugarfreeify/branch/master/graph/badge.svg)](https://codecov.io/gh/calebeby/sugarfreeify)
+[![Greenkeeper badge](https://badges.greenkeeper.io/calebeby/sugarfreeify.svg)](https://greenkeeper.io/)
 
 # Sugarfreeify
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/calebeby/sugarfreeify.svg)](https://greenkeeper.io/)
 
 Transform a project with sugar syntax to sugarfree syntax
 
