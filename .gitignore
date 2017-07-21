@@ -1,5 +1,7 @@
 test/fixtures/css/input.css
 test/fixtures/html/input.html
+test/fixtures/custom/input.html
+test/fixtures/customout/input.foobar
 
 coverage
 .nyc_output

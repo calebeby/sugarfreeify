@@ -36,3 +36,19 @@ test('sgr is converted to html', async t => {
 test('errors if no transform is specified', async t => {
   t.throws(() => sugarfreeify.run([]), 'Please specify a valid transform')
 })
+
+test('custom input extension', async t => {
+  await rmfr(fixture('custom')('input.html'))
+  await sugarfreeify.run(['custom', 'sugarml'])
+  const expected = await read(fixture('custom')('expected.html'))
+  const actual = await read(fixture('custom')('input.html'))
+  t.deepEqual(expected, actual)
+})
+
+test('custom output extension', async t => {
+  await rmfr(fixture('customout')('input.foobar'))
+  await sugarfreeify.run(['abcd', 'sugarml', 'foobar'])
+  const expected = await read(fixture('customout')('expected.foobar'))
+  const actual = await read(fixture('customout')('input.foobar'))
+  t.deepEqual(expected, actual)
+})
