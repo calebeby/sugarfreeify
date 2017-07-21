@@ -63,15 +63,22 @@ const run = (input, flags) => {
   inputExt = inputExt || processors[transform].inputExt
   outputExt = outputExt || processors[transform].outputExt
 
-  return sugarfreeify({
+  const {promise, emitter} = sugarfreeify({
     inputExt,
     outputExt,
     transform: processors[transform].transform
-  }).then(console.log(chalk.green('done!')))
+  })
 
+  emitter.on('finishedFile', ({inputFile, outputFile}) =>
+    console.log(
+      `${chalk.gray(inputFile)} ${chalk.green('=>')} ${chalk.gray(outputFile)}`
+    )
+  )
+
+  return promise
 }
 
-module.exports = { run }
+module.exports = {run}
 
 if (require.main === module) {
   run(cli.input, cli.flags)
