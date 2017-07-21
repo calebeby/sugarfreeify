@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Testing
+  body#index
+    h1 Hello world!
+    p.intro Wow what a great little language! Some features:
+    ul(data-list='yep' @sortable)
+      li: a(href='#') whitespace significant!
+      li: a(href='#') simple classes and ids!
+    footer
+      | Thanks for visiting
+      span see you next time!

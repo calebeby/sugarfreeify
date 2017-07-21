@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-
-const fs = require('then-fs')
-const globby = require('globby')
-const path = require('path')
+const meow = require('meow')
 const chalk = require('chalk')
+const sugarfreeify = require('sugarfreeify-core')
 
 // Reshape
 const reshape = require('reshape')
@@ -19,34 +17,62 @@ const reshapeConfig = {
   plugins: [beautify()]
 }
 
-const processFiles = opts => {
-  globby([`**/*.${opts.inputExt}`, '!node_modules'])
-    .then(files =>
-      Promise.all(
-        files.map(file => {
-          const newFile = path.join(
-            path.dirname(file),
-            path.basename(file, opts.inputExt) + opts.outputExt
-          )
-          return fs
-            .readFile(file, 'utf-8')
-            .then(opts.process)
-            .then(newText => fs.writeFile(newFile, newText))
-        })
-      )
-    )
-    .then(console.log(chalk.green('Done!')))
+const cli = meow(`
+  Usage
+    $ sugarfreeify [inputextension] <processor> [outputextension]
+
+  <processor> is one of:
+    - sugarml
+    - sugarss
+
+  Examples
+    $ sugarfreeify sugarml
+`)
+
+const processors = {
+  sugarml: {
+    inputExt: 'sgr',
+    outputExt: 'html',
+    transform: text =>
+    reshape(reshapeConfig).process(text).then(res => res.output())
+  },
+  sugarss: {
+    inputExt: 'sss',
+    outputExt: 'css',
+    transform: text => postcss().process(text, {parser: sugarss})
+  }
 }
 
-processFiles({
-  inputExt: 'sgr',
-  outputExt: 'html',
-  process: text =>
-    reshape(reshapeConfig).process(text).then(res => res.output())
-})
+const run = (input, flags) => {
+  let transform, inputExt, outputExt
 
-processFiles({
-  inputExt: 'sss',
-  outputExt: 'css',
-  process: text => postcss().process(text, {parser: sugarss})
-})
+  input.forEach((keyword, i) => {
+    if (processors[keyword] !== undefined) {
+      transform = keyword
+    } else if (i === 0) {
+      inputExt = keyword
+    } else {
+      outputExt = keyword
+    }
+  })
+
+  if (!transform) {
+    throw new Error('Please specify a valid transform')
+  }
+
+  inputExt = inputExt || processors[transform].inputExt
+  outputExt = outputExt || processors[transform].outputExt
+
+  return sugarfreeify({
+    inputExt,
+    outputExt,
+    transform: processors[transform].transform
+  }).then(console.log(chalk.green('done!')))
+
+}
+
+module.exports = { run }
+
+if (require.main === module) {
+  run(cli.input, cli.flags)
+}
