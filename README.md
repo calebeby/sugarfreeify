@@ -17,6 +17,9 @@ Transform a project with sugar syntax to sugarfree syntax
     - sugarml
     - sugarss
 
+  [inputextension] defaults to sgr for sugarml and sss for sugarss
+  [outputextension] defaults to html for sugarml and css for sugarss
+
   Examples
     $ sugarfreeify sugarml
 ```
