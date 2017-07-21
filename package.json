@@ -1,0 +1,18 @@
+{
+  "name": "sugarfreeify",
+  "version": "0.0.0",
+  "description": "Transform a project with sugar syntax to sugarfree syntax",
+  "main": "index.js",
+  "author": "Caleb Eby (@calebeby)",
+  "license": "MIT",
+  "bin": {
+    "sugarfreeify": "index.js"
+  },
+  "dependencies": {
+    "globby": "^6.1.0",
+    "reshape": "^0.4.1",
+    "reshape-beautify": "^0.1.2",
+    "sugarml": "^0.6.0",
+    "then-fs": "^2.0.0"
+  }
+}
