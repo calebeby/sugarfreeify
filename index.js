@@ -34,7 +34,7 @@ const processors = {
     inputExt: 'sgr',
     outputExt: 'html',
     transform: text =>
-    reshape(reshapeConfig).process(text).then(res => res.output())
+      reshape(reshapeConfig).process(text).then(res => res.output())
   },
   sugarss: {
     inputExt: 'sss',
