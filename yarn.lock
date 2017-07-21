@@ -2594,9 +2594,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-sugarfreeify-core@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/sugarfreeify-core/-/sugarfreeify-core-0.0.1.tgz#8547c0681c72e8e54cff3f2ac2b1f30de6c129cc"
+sugarfreeify-core@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/sugarfreeify-core/-/sugarfreeify-core-0.0.3.tgz#24cc9767e7e788eaef2ec428c3f1c3f9083829cb"
   dependencies:
     globby "^6.1.0"
     then-fs "^2.0.0"

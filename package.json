@@ -18,7 +18,7 @@
     "postcss": "^6.0.8",
     "reshape": "^0.4.1",
     "reshape-beautify": "^0.1.2",
-    "sugarfreeify-core": "^0.0.1",
+    "sugarfreeify-core": "^0.0.3",
     "sugarml": "^0.6.0",
     "sugarss": "^1.0.0",
     "then-fs": "^2.0.0"
