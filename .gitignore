@@ -1,2 +1,9 @@
 test/fixtures/css/input.css
 test/fixtures/html/input.html
+
+coverage
+.nyc_output
+coverage.lcov
+
+node_modules
+yarn-error.log

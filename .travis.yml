@@ -7,4 +7,4 @@ node_js:
 cache: yarn
 
 after_script:
-  cat test/fixtures/css/input.css test/fixtures/html/input.html
+  npm run coverage
