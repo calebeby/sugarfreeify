@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/calebeby/sugarfreeify.svg?branch=master)](https://travis-ci.org/calebeby/sugarfreeify)
+[![codecov](https://codecov.io/gh/calebeby/sugarfreeify/branch/master/graph/badge.svg)](https://codecov.io/gh/calebeby/sugarfreeify)
 
 # Sugarfreeify
 
