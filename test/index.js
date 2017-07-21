@@ -17,6 +17,8 @@ const fixture = dir => {
   )
 }
 
+process.chdir(__dirname)
+
 test('sss is converted to css', async t => {
   await rmfr(fixture('css')('input.css'))
   await sugarfreeify.run(['sugarss'])
