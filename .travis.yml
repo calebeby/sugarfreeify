@@ -5,3 +5,7 @@ node_js:
   - 6
 
 cache: yarn
+
+after_script:
+  cat test/fixtures/css/input.css
+  cat test/fixtures/html/input.html
