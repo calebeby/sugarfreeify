@@ -2,6 +2,8 @@
 
 # Sugarfreeify
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/calebeby/sugarfreeify.svg)](https://greenkeeper.io/)
+
 Transform a project with sugar syntax to sugarfree syntax
 
 ## Usage
