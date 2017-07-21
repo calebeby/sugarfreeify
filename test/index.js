@@ -32,3 +32,7 @@ test('sgr is converted to html', async t => {
   const actual = await read(fixture('html')('input.html'))
   t.deepEqual(expected, actual)
 })
+
+test('errors if no transform is specified', async t => {
+  t.throws(() => sugarfreeify.run([]), 'Please specify a valid transform')
+})
